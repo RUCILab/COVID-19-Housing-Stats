@@ -3,7 +3,10 @@ library(tidyverse)
 library(lubridate)
 library(plotly)
 
-housing <- read_csv('NJHousing.csv')
+
+data <- read_csv('https://econdata.s3-us-west-2.amazonaws.com/Reports/Core/RDC_Inventory_Core_Metrics_State_History.csv')
+
+housing <- data %>% filter(state_id == 'nj')
 
 # Add a day value to X axis so it will plot properly
 housing$month_date_yyyymm <- ymd(paste0(housing$month_date_yyyymm,'01'))
@@ -19,11 +22,11 @@ fig1 <- plot_ly(housing_2020, x = ~month_date_yyyymm) %>%
   add_trace(y = ~median_listing_price, name = 'Median Listing Price',mode = 'lines') %>%
   layout(
     title = "Median Listing Price Changes During COVID-19 in New Jersey",
-    yaxis = title = "Median Listing Price",
+    yaxis = list(title = "Median Listing Price"),
     xaxis = list(
       type = "date",
       title = "Month",
-      range=c(min(housing_2020$month_date_yyyymm), max(housing_2020$month_date_yyyymm)),
+      range = c(min(housing_2020$month_date_yyyymm), max(housing_2020$month_date_yyyymm))
     ))
 fig1
 
