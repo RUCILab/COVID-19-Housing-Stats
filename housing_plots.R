@@ -45,7 +45,7 @@ fig2 <- plot_ly(housing_2020, x = ~month_date_yyyymm) %>%
   add_trace(y = ~median_listing_price_yy, name = ~'Change relative to 2019', type = 'scatter', mode = 'lines', line = list(color=teal, width = 4)) %>%
   add_trace(y = ~median_listing_price_mm, name = ~'Change month-to-month', type = 'scatter', mode = 'lines', line = list(color=pink, width = 4)) %>%
   layout(
-    title = "Median Listing Price Percent Change During COVID-19 in New Jersey",
+    title = "Median Listing Price Percent Change During COVID-19 in New Jersey", titlefont = list(size = 18),
     yaxis = list(title = "Percent Change",
                  titlefont = list(size = 40), tickfont = list(size = 40),
                  tickformat = "%"),
@@ -64,7 +64,7 @@ fig3 <- plot_ly(housing_2020, x = ~month_date_yyyymm) %>%
   add_trace(y = ~active_listing_count_yy, name = ~'Change relative to 2019',mode = 'lines', line = list(color=teal, width = 4)) %>%
   add_trace(y = ~active_listing_count_mm, name = ~'Change month-to-month',mode = 'lines', line = list(color=pink, width = 4)) %>%
   layout(
-    title = "Percent Change in Active Listings During COVID-19 in New Jersey",
+    title = "Percent Change in Active Listings During COVID-19 in New Jersey", titlefont = list(size = 18),
     yaxis = list(title = "Percent Change",
                  titlefont = list(size = 40), tickfont = list(size = 40),
                  tickformat = "%"),
@@ -83,7 +83,7 @@ fig4 <- plot_ly(housing_2020, x = ~month_date_yyyymm) %>%
   add_trace(y = ~median_days_on_market_yy, name = ~'Change relative to 2019',mode = 'lines', line = list(color=teal, width = 4)) %>%
   add_trace(y = ~median_days_on_market_mm, name = ~'Change month-to-month',mode = 'lines', line = list(color=pink, width = 4)) %>%
   layout(
-    title = "Percent Change in Median Days on the Market During COVID-19 in New Jersey",
+    title = "Percent Change in Median Days on the Market During COVID-19 in New Jersey", titlefont = list(size = 18),
     yaxis = list(title = "Percent Change",
                  titlefont = list(size = 40), tickfont = list(size = 40),
                  tickformat = "%"),
@@ -102,7 +102,7 @@ fig5 <- plot_ly(housing_2020, x = ~month_date_yyyymm) %>%
   add_trace(y = ~new_listing_count_yy, name = ~'Change relative to 2019',mode = 'lines', line = list(color=teal, width = 4)) %>%
   add_trace(y = ~new_listing_count_mm, name = ~'Change month-to-month',mode = 'lines', line = list(color=pink, width = 4)) %>%
   layout(
-    title = "Percent Change in New Listings During COVID-19 in New Jersey",
+    title = "Percent Change in New Listings During COVID-19 in New Jersey", titlefont = list(size = 18),
     yaxis = list(title = "Percent Change",
                  titlefont = list(size = 40), tickfont = list(size = 40),
                  tickformat = "%"),

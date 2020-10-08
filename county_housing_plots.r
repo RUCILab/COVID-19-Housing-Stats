@@ -4,6 +4,13 @@ library(tidyverse)
 library(lubridate)
 library(plotly)
 
+# Custom colours
+
+teal <- '#00aaa0'
+pink <- 'e54060'
+blue <- '0c5c80'
+brown <- '#80300c'
+
 # Read in data and county mapping file
 data <- read_csv('https://econdata.s3-us-west-2.amazonaws.com/Reports/Core/RDC_Inventory_Core_Metrics_County_History.csv')
 
@@ -11,13 +18,13 @@ data <- read_csv('https://econdata.s3-us-west-2.amazonaws.com/Reports/Core/RDC_I
 housing <- data %>% filter(str_detect(county_fips, "^34"))
 
 # Read in mapping of counties to regions derived from NJ state shapefile
-counties <- read_csv('nj_counties.csv')
+counties <- read_csv('nj_counties2.csv')
 
 # Add a day value to X axis so it will plot properly
 housing$month_date_yyyymm <- ymd(paste0(housing$month_date_yyyymm,'01'))
 
 # Join data with county mapping
-joined <- housing %>% left_join(counties, by=c('county_fips' = 'FIPSSTCO'))
+joined <- housing %>% left_join(counties, by=c('county_fips' = 'FIPSCO'))
 
 
 
@@ -40,7 +47,7 @@ summed <- ungroup(summed)
 
 # Figure 6 - Median List Price Change Relative to 2019
 
-fig6 <- plot_ly(summed, x = ~month_date_yyyymm, y = ~median_listing_price_yy, color = ~REGION, type='scatter', mode = 'lines') %>%
+fig6 <- plot_ly(summed, x = ~month_date_yyyymm, y = ~median_listing_price_yy, color = ~REGION, type='scatter', mode = 'lines', line = list(color=teal,pink, width = 4)) %>%
 layout(
     title = "Median Listing Price Change by Region During COVID-19 in New Jersey",
     yaxis = list(title = "Percent Change Since 2019",
